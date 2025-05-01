@@ -20,9 +20,9 @@ const Button: React.FC<ButtonProps> = ({
   const baseStyles = 'rounded-md font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2';
   
   const variantStyles = {
-    primary: 'bg-gradient-to-r from-aqua-600 to-green-600 text-white hover:from-aqua-700 hover:to-green-700 focus:ring-aqua-500',
-    secondary: 'bg-white text-aqua-700 border border-aqua-200 hover:bg-aqua-50 focus:ring-aqua-400',
-    outline: 'bg-transparent text-aqua-600 border border-aqua-500 hover:bg-aqua-50 focus:ring-aqua-400',
+    primary: 'bg-gradient-to-r from-blue-500 to-yellow-500 via-red-500 text-white hover:from-blue-600 hover:to-yellow-600 hover:via-red-600 focus:ring-blue-400',
+    secondary: 'bg-white text-blue-600 border border-blue-200 hover:bg-blue-50 focus:ring-blue-300',
+    outline: 'bg-transparent text-blue-600 border border-blue-500 hover:bg-blue-50 focus:ring-blue-300',
   };
   
   const sizeStyles = {

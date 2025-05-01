@@ -56,7 +56,7 @@ const Header: React.FC = () => {
   ];
   
   return (
-    <header className="bg-gradient-to-r from-teal-800 to-green-900 text-white shadow-md">
+    <header className="bg-gradient-to-r from-blue-600 to-green-600 text-white shadow-md fixed top-0 left-0 w-full z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <div className="flex justify-between items-center">
           {/* Logo */}
@@ -64,8 +64,8 @@ const Header: React.FC = () => {
             className="flex items-center cursor-pointer" 
             onClick={() => navigate('/home')}
           >
-            <Flag className="h-8 w-8 mr-2" />
-            <span className="text-xl font-bold">CIK</span>
+            <Flag className="h-8 w-8 mr-2 text-white" />
+            <span className="text-xl font-bold text-white">CIK</span>
           </div>
           
           {/* Mobile Menu Toggle */}
@@ -86,7 +86,7 @@ const Header: React.FC = () => {
                 variant="outline" 
                 size="sm"
                 onClick={item.onClick}
-                className="text-white border-white hover:bg-white/10"
+                className="text-white border-white hover:bg-blue-500 hover:border-blue-500 focus:outline-none"
               >
                 {item.icon}
                 {item.label}
@@ -97,7 +97,7 @@ const Header: React.FC = () => {
               variant="outline" 
               size="sm" 
               onClick={handleLogout}
-              className="text-white border-white hover:bg-white/10"
+              className="text-white border-white hover:bg-blue-500 hover:border-blue-500 focus:outline-none"
             >
               <LogOut size={16} className="mr-2" />
               Sair
@@ -107,7 +107,7 @@ const Header: React.FC = () => {
         
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="lg:hidden absolute left-0 right-0 bg-gradient-to-r from-teal-400 to-green-400 z-50">
+          <div className="lg:hidden absolute left-0 right-0 bg-gradient-to-r from-blue-600 to-green-600 z-50">
             <div className="px-4 pt-2 pb-4 space-y-2">
               {MenuItems.map((item, index) => (
                 <Button
@@ -119,7 +119,7 @@ const Header: React.FC = () => {
                     item.onClick();
                     setIsMenuOpen(false);
                   }}
-                  className="text-white border-white hover:bg-white/10 justify-start"
+                  className="text-white border-white hover:bg-blue-500 hover:border-blue-500 focus:outline-none justify-start"
                 >
                   {item.icon}
                   {item.label}
@@ -134,7 +134,7 @@ const Header: React.FC = () => {
                   handleLogout();
                   setIsMenuOpen(false);
                 }}
-                className="text-white border-white hover:bg-white/10 justify-start"
+                className="text-white border-white hover:bg-blue-500 hover:border-blue-500 focus:outline-none justify-start"
               >
                 <LogOut size={16} className="mr-2" />
                 Sair

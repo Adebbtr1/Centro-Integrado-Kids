@@ -56,23 +56,17 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit, isLoading = false }) =>
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (validate()) {
-      // Retrieve registered users from localStorage
       const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
-      
-      // Find user by email
       const user = registeredUsers.find((u: any) => u.email === formData.email);
       
       if (user) {
-        // Store user information in localStorage
         localStorage.setItem('registeredUser', JSON.stringify({
           username: user.username,
           email: user.email,
           fullName: user.fullName || user.username
         }));
-
         onSubmit(formData);
       } else {
-        // Handle user not found
         setErrors({
           email: 'Usuário não encontrado',
         });
@@ -114,15 +108,15 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit, isLoading = false }) =>
             type="checkbox"
             checked={formData.rememberMe}
             onChange={handleChange}
-            className="h-4 w-4 text-aqua-600 focus:ring-aqua-500 border-gray-300 rounded"
+            className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
           />
-          <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
+          <label htmlFor="remember-me" className="ml-2 block text-sm text-white">
             Lembrar de mim
           </label>
         </div>
         
         <div className="text-sm">
-          <a href="#" className="font-medium text-aqua-600 hover:text-aqua-500">
+          <a href="#" className="font-medium text-white hover:text-blue-600">
             Esqueceu sua senha?
           </a>
         </div>
@@ -132,14 +126,14 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit, isLoading = false }) =>
         type="submit"
         fullWidth
         isLoading={isLoading}
-        className="mb-4"
+        className="mb-4 bg-blue-500 hover:bg-blue-600 text-white"
       >
         Entrar
       </Button>
       
-      <div className="text-center text-sm">
+      <div className="text-center text-sm text-white">
         Não tem uma conta?{' '}
-        <Link to="/register" className="font-medium text-aqua-600 hover:text-aqua-500">
+        <Link to="/register" className="font-medium text-white hover:text-blue-600">
           Cadastre-se
         </Link>
       </div>
