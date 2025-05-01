@@ -1,6 +1,11 @@
 import React from 'react';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import { Pagination, Autoplay, Navigation } from 'swiper/modules';
 
 const disorders = [
   {
@@ -47,36 +52,36 @@ const disorders = [
   },
 ];
 
-const professionals = [
+const carouselImages = [
   {
-    title: 'Psicólogo',
-    description:
-      'O psicólogo é um profissional que atua ajudando na saúde mental, lidando com questões emocionais, comportamentais e sociais. Ele utiliza técnicas de terapia para promover o bem-estar psicológico e emocional dos pacientes.',
-    image: '/images/kids123.png',
+    src: '/images/kids2.jpg',
+    alt: 'Atendimento individualizado',
+    caption: 'Cuidado individualizado',
   },
   {
-    title: 'Psicopedagogo',
-    description:
-      'O psicopedagogo auxilia no processo de aprendizagem, diagnosticando e tratando dificuldades relacionadas à educação. Ele ajuda crianças, adolescentes e adultos a superarem barreiras cognitivas no aprendizado.',
-    image: '/images/kids124.png',
+    src: 'https://images.pexels.com/photos/8378737/pexels-photo-8378737.jpeg',
+    alt: 'Equipe multidisciplinar',
+    caption: 'Equipe multidisciplinar',
   },
   {
-    title: 'Fisioterapeuta',
-    description:
-      'O fisioterapeuta trabalha na reabilitação física, ajudando a melhorar a mobilidade e reduzir dores. Ele usa técnicas de terapia física para tratar lesões, doenças e condições que afetam o movimento do corpo.',
-    image: '/images/kids.png',
+    src: 'https://images.pexels.com/photos/8378752/pexels-photo-8378752.jpeg',
+    alt: 'Atividades educativas',
+    caption: 'Atividades educativas',
   },
   {
-    title: 'Neuropsicólogo',
-    description:
-      'O neuropsicólogo estuda a relação entre o cérebro e o comportamento. Ele avalia e trata pessoas com distúrbios neurológicos, ajudando a melhorar funções cognitivas afetadas por lesões cerebrais ou condições neuropsiquiátricas.',
-    image: '/images/neuropsicologo.jpg',
+    src: 'https://images.pexels.com/photos/7352806/pexels-photo-7352806.jpeg',
+    alt: 'Integração social',
+    caption: 'Integração social',
   },
   {
-    title: 'Terapeuta Ocupacional',
-    description:
-      'O terapeuta ocupacional auxilia na recuperação de habilidades para realizar atividades cotidianas. Ele trabalha com indivíduos que enfrentam dificuldades devido a condições físicas, mentais ou cognitivas, promovendo independência e qualidade de vida.',
-    image: '/images/terapeuta_ocupacional.jpg',
+    src: 'https://images.pexels.com/photos/3662803/pexels-photo-3662803.jpeg',
+    alt: 'Inclusão escolar',
+    caption: 'Inclusão escolar',
+  },
+  {
+    src: 'https://images.pexels.com/photos/7929377/pexels-photo-7929377.jpeg',
+    alt: 'Apoio emocional',
+    caption: 'Apoio emocional',
   },
 ];
 
@@ -86,19 +91,44 @@ const HomePage: React.FC = () => {
       <Header />
 
       <main className="pt-20 pb-24">
-        {/* Imagem de fundo */}
-
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">
-  Centro Integrado Kids
-          </h1>
-        </div>
+            <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">
+              Centro Integrado Kids
+            </h1>
+          </div>
 
-        <div className="mb-16 max-w-3xl mx-auto text-center">
-  <h2 className="text-2xl font-bold mb-4 text-gray-800">Quem Somos Nós</h2>
-  <p className="text-gray-600 text-lg">
-    Somos um centro dedicado ao cuidado, desenvolvimento e bem-estar de crianças com transtornos e dificuldades no aprendizado. Nossa equipe multidisciplinar trabalha com empatia, profissionalismo e compromisso para oferecer suporte individualizado e promover o desenvolvimento integral de cada criança.
+          <div className="mb-16 max-w-4xl mx-auto text-center">
+  <h2 className="text-2xl font-bold mb-8 text-gray-800">Quem Somos Nós</h2>
+
+  {/* Carrossel de 6 Cards */}
+  <Swiper
+    modules={[Pagination, Autoplay, Navigation]}
+    spaceBetween={20}
+    slidesPerView={6}
+    pagination={{ clickable: true }}
+    autoplay={{ delay: 3000 }}
+    navigation
+    loop={true}
+    className="w-full mb-8"
+  >
+    {carouselImages.map((img, index) => (
+      <SwiperSlide key={index}>
+        <div className="flex flex-col items-center">
+          <img
+            src={img.src}
+            alt={img.alt}
+            className="w-full h-40 object-cover rounded-lg shadow"
+          />
+          <p className="mt-2 text-gray-700 text-sm text-center">{img.caption}</p>
+        </div>
+      </SwiperSlide>
+    ))}
+  </Swiper>
+
+  {/* Texto "Quem Somos Nós" */}
+  <p className="text-gray-700 text-lg leading-relaxed">
+    O Centro Integrado Kids é um espaço dedicado ao acolhimento e desenvolvimento de crianças com necessidades especiais. Contamos com uma equipe multidisciplinar formada por psicólogos, terapeutas ocupacionais, fonoaudiólogos, psicopedagogos e outros profissionais especializados no atendimento infantil. Nosso objetivo é promover inclusão, autonomia e bem-estar por meio de estratégias personalizadas, respeito às individualidades e um ambiente acolhedor para crianças e suas famílias.
   </p>
 </div>
 
@@ -106,9 +136,9 @@ const HomePage: React.FC = () => {
           {/* Cards sobre Transtornos */}
           <div className="py-16 relative z-10">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">
-  Transtornos
-</h2>
+              <h2 className="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">
+                Transtornos
+              </h2>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                 {disorders.map((card, index) => (
@@ -131,7 +161,6 @@ const HomePage: React.FC = () => {
         </div>
       </main>
 
-      {/* Footer fixado ao final da tela */}
       <Footer />
     </div>
   );
