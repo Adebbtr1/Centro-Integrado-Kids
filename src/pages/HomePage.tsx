@@ -1,87 +1,49 @@
 import React from 'react';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
-import { Pagination, Autoplay, Navigation } from 'swiper/modules';
 
 const disorders = [
   {
     title: 'Autismo',
     description:
-      'O autismo é um transtorno do desenvolvimento que afeta a comunicação, comportamento e interação social. A pessoa com autismo pode apresentar dificuldades em interações sociais e padrões de comportamento repetitivos. Com o suporte adequado, pessoas autistas podem desenvolver habilidades importantes e participar ativamente da sociedade.',
+      'O autismo é um transtorno do desenvolvimento que afeta a comunicação, comportamento e interação social...',
     image:
       'https://images.pexels.com/photos/8709147/pexels-photo-8709147.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
   },
   {
     title: 'TDAH',
     description:
-      'O TDAH é caracterizado por dificuldades de atenção, impulsividade e hiperatividade. Indivíduos com TDAH podem ter desafios em se concentrar em tarefas, controlar impulsos e manter um comportamento adequado em diferentes ambientes. Intervenções como acompanhamento terapêutico e estratégias educacionais podem ser muito eficazes.',
+      'O TDAH é caracterizado por dificuldades de atenção, impulsividade e hiperatividade...',
     image:
       'https://images.pexels.com/photos/8378737/pexels-photo-8378737.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
   },
   {
     title: 'TOD',
     description:
-      'O TOD é um transtorno que envolve padrões de comportamento desafiador e oposição a autoridades. Indivíduos com TOD frequentemente se recusam a seguir regras, desobedecem instruções e têm dificuldades em controlar sua raiva. O tratamento inclui terapia comportamental e estratégias para melhorar a comunicação e o controle emocional.',
+      'O TOD é um transtorno que envolve padrões de comportamento desafiador e oposição a autoridades...',
     image:
       'https://images.pexels.com/photos/8378752/pexels-photo-8378752.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
   },
   {
     title: 'Deficiência Intelectual',
     description:
-      'Caracteriza-se por limitações significativas no funcionamento intelectual e no comportamento adaptativo, afetando habilidades sociais, conceituais e práticas.',
+      'Caracteriza-se por limitações significativas no funcionamento intelectual e no comportamento adaptativo...',
     image:
       'https://images.pexels.com/photos/7352806/pexels-photo-7352806.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
   },
   {
     title: 'Dislexia',
     description:
-      'É uma dificuldade específica de aprendizagem, principalmente na leitura, escrita e soletração, sem relação com a inteligência geral da criança.',
+      'É uma dificuldade específica de aprendizagem, principalmente na leitura, escrita e soletração...',
     image:
       'https://images.pexels.com/photos/3662803/pexels-photo-3662803.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
   },
   {
     title: 'Transtorno de Ansiedade Infantil',
     description:
-      'A ansiedade infantil pode se manifestar de diversas formas, como medo excessivo, preocupação constante ou fobia escolar. Crianças com esse transtorno podem ter dificuldades para dormir, se concentrar ou se separar dos pais. O tratamento geralmente envolve terapia cognitivo-comportamental e, em alguns casos, acompanhamento médico.',
+      'A ansiedade infantil pode se manifestar de diversas formas, como medo excessivo, preocupação constante ou fobia escolar...',
     image:
       'https://images.pexels.com/photos/7929377/pexels-photo-7929377.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-  },
-];
-
-const carouselImages = [
-  {
-    src: '/images/kids2.jpg',
-    alt: 'Atendimento individualizado',
-    caption: 'Cuidado individualizado',
-  },
-  {
-    src: 'https://images.pexels.com/photos/8378737/pexels-photo-8378737.jpeg',
-    alt: 'Equipe multidisciplinar',
-    caption: 'Equipe multidisciplinar',
-  },
-  {
-    src: 'https://images.pexels.com/photos/8378752/pexels-photo-8378752.jpeg',
-    alt: 'Atividades educativas',
-    caption: 'Atividades educativas',
-  },
-  {
-    src: 'https://images.pexels.com/photos/7352806/pexels-photo-7352806.jpeg',
-    alt: 'Integração social',
-    caption: 'Integração social',
-  },
-  {
-    src: 'https://images.pexels.com/photos/3662803/pexels-photo-3662803.jpeg',
-    alt: 'Inclusão escolar',
-    caption: 'Inclusão escolar',
-  },
-  {
-    src: 'https://images.pexels.com/photos/7929377/pexels-photo-7929377.jpeg',
-    alt: 'Apoio emocional',
-    caption: 'Apoio emocional',
   },
 ];
 
@@ -93,51 +55,37 @@ const HomePage: React.FC = () => {
       <main className="pt-20 pb-24">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">
+            <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-500 to-green-400 bg-clip-text text-transparent">
               Centro Integrado Kids
             </h1>
           </div>
 
-          <div className="mb-16 max-w-4xl mx-auto text-center">
-  <h2 className="text-2xl font-bold mb-8 text-gray-800">Quem Somos Nós</h2>
-
-  {/* Carrossel de 6 Cards */}
-  <Swiper
-    modules={[Pagination, Autoplay, Navigation]}
-    spaceBetween={20}
-    slidesPerView={6}
-    pagination={{ clickable: true }}
-    autoplay={{ delay: 3000 }}
-    navigation
-    loop={true}
-    className="w-full mb-8"
-  >
-    {carouselImages.map((img, index) => (
-      <SwiperSlide key={index}>
-        <div className="flex flex-col items-center">
-          <img
-            src={img.src}
-            alt={img.alt}
-            className="w-full h-40 object-cover rounded-lg shadow"
-          />
-          <p className="mt-2 text-gray-700 text-sm text-center">{img.caption}</p>
-        </div>
-      </SwiperSlide>
+          <div className="mb-16 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+  {/* Coluna da Esquerda com 6 Cards */}
+  <div className="space-y-4">
+    {[1, 2, 3, 4, 5, 6].map((n) => (
+      <div
+        key={n}
+        className="bg-white p-4 rounded-lg shadow-md border border-gray-200"
+      >
+        <h3 className="text-lg font-semibold text-blue-600 mb-1">
+          Card {n}
+        </h3>
+        <p className="text-gray-600 text-sm">
+          Descrição breve do conteúdo do card {n}.
+        </p>
+      </div>
     ))}
-  </Swiper>
+  </div>
 
-  {/* Texto "Quem Somos Nós" */}
-  <p className="text-gray-700 text-lg leading-relaxed">
-    O Centro Integrado Kids é um espaço dedicado ao acolhimento e desenvolvimento de crianças com necessidades especiais. Contamos com uma equipe multidisciplinar formada por psicólogos, terapeutas ocupacionais, fonoaudiólogos, psicopedagogos e outros profissionais especializados no atendimento infantil. Nosso objetivo é promover inclusão, autonomia e bem-estar por meio de estratégias personalizadas, respeito às individualidades e um ambiente acolhedor para crianças e suas famílias.
-  </p>
+  {/* Conteúdo "Quem Somos Nós" (2 colunas de largura em telas md+) */}
+  
 </div>
-
-
           {/* Cards sobre Transtornos */}
           <div className="py-16 relative z-10">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <h2 className="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">
-                Transtornos
+              <h2 className="text-3xl font-bold text-center font-bold mb-4 bg-gradient-to-r from-green-500 to-blue-400 bg-clip-text text-transparent">
+                Vocês sabiam?
               </h2>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">

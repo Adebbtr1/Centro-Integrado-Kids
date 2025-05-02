@@ -1,3 +1,35 @@
+.header-pattern::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: repeating-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.05) 0,
+      rgba(255, 255, 255, 0.05) 10px,
+      transparent 10px,
+      transparent 20px
+    );
+    animation: movePattern 10s linear infinite;
+    z-index: 0;
+    pointer-events: none;
+  }
+  
+  @keyframes movePattern {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  
+  
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
