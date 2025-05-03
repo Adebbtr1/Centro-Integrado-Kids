@@ -49,7 +49,7 @@ const disorders = [
 
 const HomePage: React.FC = () => {
   return (
-    <div className="relative min-h-screen bg-gradient-to-b from-yellow-200 to-white">
+    <div className="relative min-h-screen bg-gradient-to-b from-yellow-100 to-white">
       <Header />
 
       <main className="pt-20 pb-24">
@@ -60,27 +60,176 @@ const HomePage: React.FC = () => {
             </h1>
           </div>
 
-          <div className="mb-16 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-  {/* Coluna da Esquerda com 6 Cards */}
-  <div className="space-y-4">
-    {[1, 2, 3, 4, 5, 6].map((n) => (
-      <div
-        key={n}
-        className="bg-white p-4 rounded-lg shadow-md border border-gray-200"
-      >
-        <h3 className="text-lg font-semibold text-blue-600 mb-1">
-          Card {n}
-        </h3>
-        <p className="text-gray-600 text-sm">
-          Descrição breve do conteúdo do card {n}.
-        </p>
-      </div>
-    ))}
+          {/* Cards laterais sobre Autismo */}
+          <section className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+            {/* Lateral esquerda com cards */}
+       {/* Lateral esquerda com cards informativos sobre autismo */}
+       <div className="w-full flex flex-col gap-6">
+  <div className="bg-white rounded-xl shadow-md p-4 flex items-center gap-4">
+    <img
+      src="/images/luiz.jpg"
+      alt="Profissionais"
+      className="w-16 h-16"
+    />
+    <div>
+      <h3 className="text-lg font-semibold text-cyan-800">Psicopedagogo <br /> Luiz França</h3>
+      <p className="text-gray-700 text-sm mt-2">
+         <br />
+        .Avaliação diagnóstica completa. Terapias em Grupo. Avaliação de Transtornos Escolares.
+        Apoio Psicopedagógico e para deficiências. Plano de Tratamento individualizado.
+      </p>
+    </div>
   </div>
 
-  {/* Conteúdo "Quem Somos Nós" (2 colunas de largura em telas md+) */}
-  
+  <div className="bg-white rounded-xl shadow-md p-4 flex items-center gap-4">
+    <img
+      src="images/masso.jpg"
+      alt="Profissionais"
+      className="w-16 h-16"
+    />
+    <div>
+      <h3 className="text-lg font-semibold text-cyan-800">Massoterapeuta <br /></h3>
+      <p className="text-gray-700 text-sm mt-2">
+        Trabalho com massagens, Ventosaterapia, Auriculoterapia, Bambuterapia que envolve técnicas
+        da MTC (Medicina Tradicional Chinesa).
+      </p>
+    </div>
+  </div>
+
+  <div className="bg-white rounded-xl shadow-md p-4 flex items-center gap-4">
+    <img
+      src="images/regina.jpg"
+      alt="Profissionais"
+      className="w-16 h-16"
+    />
+    <div>
+      <h3 className="text-lg font-semibold text-cyan-800">Psicóloga <br /> Regina Melo</h3>
+      <p className="text-gray-700 text-sm mt-2">
+        Avaliação diagnóstica completa. Terapias em grupo. Avaliação Transtornos Escolares.
+        Apoio psicopedagógico e para Deficiências. Plano de Tratamento Individualizado.
+      </p>
+    </div>
+  </div>
+
+  <div className="bg-white rounded-xl shadow-md p-4 flex items-center gap-4">
+    <img
+      src="/images/neuropsicopedagoga.jpg"
+      alt="Profissionais"
+      className="w-16 h-16"
+    />
+    <div>
+      <h3 className="text-lg font-semibold text-cyan-800">Neuropsicopedagoga <br />Thamiris Rafaella</h3>
+      <p className="text-gray-700 text-sm mt-2">
+        Avaliação Neuropsicopedagógica. Intervenção das dificuldades, distúrbios e transtornos de aprendizado.
+        Orientação Familiar. Consultório Educacional.
+      </p>
+    </div>
+  </div>
+  <div className="w-full flex flex-col gap-6">
+  {/* ...cards anteriores... */}
+
+  <div className="bg-white rounded-xl shadow-md p-4 flex items-center gap-4">
+    <img
+      src="/images/fisio.jpg"
+      alt="Profissionais"
+      className="w-16 h-16"
+    />
+    <div>
+      <h3 className="text-lg font-semibold text-cyan-800">Fisioterapeuta <br /> Danila Oliveira</h3>
+      <p className="text-gray-700 text-sm mt-2">
+        Atendimento voltado para crianças atípicas. Formação em fisioterapia e psicomotricidade.
+        Pós-graduação em Fisioterapia Neurofuncional Pediátrica.
+      </p>
+    </div>
+  </div>
+
+  <div className="bg-white rounded-xl shadow-md p-4 flex items-center gap-4">
+    <img
+      src="/images/neuropsi.jpg"
+      alt="Profissionais"
+      className="w-16 h-16"
+    />
+    <div>
+      <h3 className="text-lg font-semibold text-cyan-800">Neuropsicóloga <br /> Marcia Teixeira</h3>
+      <p className="text-gray-700 text-sm mt-2">
+        Realização de avaliações Neuropsicológica detalhadas para diagnóstico e Plano
+        de intervenção de distúrbios de neuro desenvolvimento, como Autismo, deificuldades 
+        de aprendizagem, prejuízos de atenção, dificuldades cognitivas nos quadros psiquiátricos
+        como: TDAH, Alzheimer e outros.
+      </p>
+    </div>
+  </div>
+
+  <div className="bg-white rounded-xl shadow-md p-4 flex items-center gap-4">
+    <img
+      src="/images/psicomotricista.jpg"
+      alt="Profissionais"
+      className="w-16 h-16"
+    />
+    <div>
+      <h3 className="text-lg font-semibold text-cyan-800">Psicomotricista <br /> Ana Costa</h3>
+      <p className="text-gray-700 text-sm mt-2">
+        Atuação na organização corporal, lateralidade, equilíbrio e no desenvolvimento psicomotor infantil.
+      </p>
+    </div>
+  </div>
 </div>
+
+</div>
+
+
+            {/* Conteúdo principal */}
+  {/* Conteúdo principal */}
+<div className="md:col-span-2 flex flex-col items-center text-center">
+  <h2 className="text-3xl font-bold text-blue-900 mb-4">Quem somos nós?</h2>
+
+  <div className="bg-gradient-to-r from-blue-300 to-green-200 p-6 rounded-xl shadow-md max-w-2xl">
+    <p className="text-gray-700 mb-6 leading-relaxed">
+      No Centro Integrado Kids, unimos profissionais especializados em diversas áreas para oferecer um atendimento completo e acolhedor às crianças e suas famílias. Nosso objetivo é promover o desenvolvimento infantil por meio de avaliações precisas, terapias personalizadas e orientação familiar contínua.
+      <br /><br />
+      Contamos com uma equipe formada por psicopedagogos, psicólogos, neuropsicólogos, fisioterapeutas, psicomotricistas e massoterapeutas, todos comprometidos com o cuidado humanizado e o bem-estar dos pequenos. Atuamos com enfoque nos transtornos do neurodesenvolvimento, como o autismo, TDAH, TOD, dislexia, deficiência intelectual e ansiedade infantil, respeitando as particularidades de cada criança.
+      <br /><br />
+      Acreditamos que, com afeto, conhecimento e colaboração entre família e profissionais, é possível construir trajetórias de crescimento mais saudáveis e felizes.
+    </p>
+  </div>
+  <br />
+  <h2 className="text-3xl font-bold text-blue-900 mb-4">Missão</h2>
+
+<div className="bg-gradient-to-r from-blue-300 to-green-200 p-6 rounded-xl shadow-md max-w-2xl">
+  <p className="text-gray-700 mb-6 leading-relaxed">
+  Promover o acolhimento e suporte a crianças, adolescentes e jovens com deficiências ocultas
+  e transtornos escolares relacionados à saúde mental, tais como TEA, TDAH, TOD, TEI, entre outros,
+   visando a criação de um ambiente de compreensão e assistência adequada.
+
+  </p>
+</div>
+
+<br />
+
+<h2 className="text-3xl font-bold text-blue-900 mb-4">Visão</h2>
+
+<div className="bg-gradient-to-r from-blue-300 to-green-200 p-6 rounded-xl shadow-md max-w-2xl">
+  <p className="text-gray-700 mb-6 leading-relaxed">
+  Assegurar cuidados integrais na saúde mental e emocional de indivíduos 
+  com deficiências ocultas, promovendo sua plena inclusão nas dinâmicas sociais e psicossociais. Além disso, desenvolver e implementar estratégias de apoio direcionadas às mães atípicas, 
+  com o objetivo de garantir o bem-estar integral de suas famílias.
+
+  </p>
+</div>
+
+  <div className="flex flex-col items-center mt-6">
+    <img
+      src="https://cdn-icons-png.flaticon.com/512/3208/3208721.png"
+      alt="Autismo"
+      className="w-40 h-40 object-contain mb-4"
+    />
+    <div className="text-blue-700 text-4xl">💙💙💙</div>
+  </div>
+</div>
+
+
+          </section>
+
           {/* Cards sobre Transtornos */}
           <div className="py-16 relative z-10">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
