@@ -36,11 +36,26 @@ router.post('/', authMiddleware, async (req, res) => {
   }
 });
 
-// Get students for a specific school
+// Get students and count for a specific school
 router.get('/school/:schoolId', authMiddleware, async (req, res) => {
   try {
-    const students = await Student.find({ school: req.params.schoolId });
-    res.json(students);
+    // Buscar a escola pelo ID e popular os alunos
+    const school = await School.findById(req.params.schoolId).populate('students', 'name');
+
+    // Verificar se a escola existe
+    if (!school) {
+      return res.status(404).json({ message: 'School not found' });
+    }
+
+    // Contar o número de alunos
+    const studentCount = school.students.length;
+
+    // Responder com a escola, quantidade de alunos e lista de alunos
+    res.json({
+      schoolName: school.name,
+      studentCount: studentCount,
+      students: school.students // Lista dos alunos com os nomes
+    });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Server error' });
