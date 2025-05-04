@@ -7,7 +7,7 @@ import Button from '../components/ui/Button';
 import { User, Calendar, Users, Building } from 'lucide-react';
 
 interface School {
-  id: string;
+  _id: string;
   name: string;
   director: string;
   cnpj: string;
@@ -34,10 +34,14 @@ const RegisterStudentPage: React.FC = () => {
   
   useEffect(() => {
     // Get registered schools from localStorage
-    const storedSchools = localStorage.getItem('registeredSchools');
-    if (storedSchools) {
-      setSchools(JSON.parse(storedSchools));
-    }
+    fetch('http://localhost:5000/api/schools', {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}` // Se estiver usando autenticação
+      }
+    })
+      .then(res => res.json())
+      .then(data => setSchools(data))
+      .catch(err => console.error('Erro ao buscar escolas:', err));
   }, []);
 
   const [errors, setErrors] = useState<Partial<Record<keyof StudentFormData, string>>>({});
@@ -86,9 +90,28 @@ const RegisterStudentPage: React.FC = () => {
       setIsLoading(true);
       
       // Save student data to localStorage
-      const students = JSON.parse(localStorage.getItem('registeredStudents') || '[]');
-      students.push(formData);
-      localStorage.setItem('registeredStudents', JSON.stringify(students));
+      fetch('http://localhost:5000/api/students', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token')}` // se necessário
+        },
+        body: JSON.stringify(formData)
+      })
+        .then(res => {
+          if (!res.ok) throw new Error('Erro ao cadastrar aluno');
+          return res.json();
+        })
+        .then(() => {
+          setIsLoading(false);
+          navigate('/home');
+        })
+        .catch(err => {
+          setIsLoading(false);
+          console.error(err);
+          alert('Erro ao cadastrar aluno');
+        });
+      
       
       setTimeout(() => {
         setIsLoading(false);
@@ -161,9 +184,10 @@ const RegisterStudentPage: React.FC = () => {
                   >
                     <option value="">Selecione uma escola</option>
                     {schools.map(school => (
-                      <option key={school.id} value={school.id}>
-                        {school.name}
-                      </option>
+                      <option key={school._id} value={school._id}>
+                      {school.name}
+                    </option>
+                    
                     ))}
                   </select>
                 </div>

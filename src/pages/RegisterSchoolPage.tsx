@@ -80,7 +80,7 @@ const RegisterSchoolPage: React.FC = () => {
         return;
       }
       
-      fetch('http://localhost:5000/schools', {
+      fetch('http://localhost:5000/api/schools', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -56,17 +56,21 @@ const Header: React.FC = () => {
   ];
 
   return (
-    <header className="fixed top-0 left-0 w-full bg-gradient-to-r from-blue-600 to-green-600 text-white shadow-md z-50">
+    <header className="fixed top-0 left-0 w-full bg-gradient-to-r from-yellow-400 via-red-500 to-blue-500 text-white shadow-md z-50">
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <div className="flex justify-between items-center">
           {/* Logo */}
           <div
-            className="flex items-center cursor-pointer"
-            onClick={() => navigate('/home')}
-          >
-            <Flag className="h-8 w-8 mr-2 text-white" />
-            <span className="text-xl font-bold text-white">CIK</span>
-          </div>
+  className="flex items-center cursor-pointer"
+  onClick={() => navigate('/home')}
+>
+  <img
+    src="/images/cik10.jpg" // substitua pelo caminho correto da sua logo
+    alt="Logo Centro Integrado Kids"
+    className="h-11 w-11 mr-2 rounded-full object-cover"
+  />
+  <span className="text-xl font-bold text-white">CIK</span>
+</div>
 
           {/* Mobile Menu Toggle */}
           <div className="lg:hidden">
@@ -86,7 +90,7 @@ const Header: React.FC = () => {
                 variant="outline"
                 size="sm"
                 onClick={item.onClick}
-                className="text-white border-white hover:bg-blue-500 hover:border-blue-500 focus:outline-none"
+                className="text-white border-white hover:bg-purple-500 hover:border-blue-500 focus:outline-none"
               >
                 {item.icon}
                 {item.label}

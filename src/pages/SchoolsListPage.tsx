@@ -22,16 +22,35 @@ const SchoolsListPage: React.FC = () => {
   const [students, setStudents] = useState<Student[]>([]);
 
   useEffect(() => {
-    const storedSchools = localStorage.getItem('registeredSchools');
-    const storedStudents = localStorage.getItem('registeredStudents');
-    
-    if (storedSchools) {
-      setSchools(JSON.parse(storedSchools));
-    }
-    if (storedStudents) {
-      setStudents(JSON.parse(storedStudents));
-    }
+    const fetchData = async () => {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        console.error('Token não encontrado');
+        return;
+      }
+  
+      try {
+        const response = await fetch('http://localhost:5000/api/schools', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+  
+        if (!response.ok) {
+          throw new Error('Erro ao buscar escolas');
+        }
+  
+        const data = await response.json();
+        setSchools(data); // Aqui vem a lista de escolas, já com alunos se você populou no backend
+  
+      } catch (error) {
+        console.error(error);
+      }
+    };
+  
+    fetchData();
   }, []);
+  
 
   return (
     <div className="min-h-screen flex flex-col">

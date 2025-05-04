@@ -53,26 +53,42 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit, isLoading = false }) =>
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (validate()) {
-      const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
-      const user = registeredUsers.find((u: any) => u.email === formData.email);
-      
-      if (user) {
-        localStorage.setItem('registeredUser', JSON.stringify({
-          username: user.username,
-          email: user.email,
-          fullName: user.fullName || user.username
-        }));
-        onSubmit(formData);
-      } else {
-        setErrors({
-          email: 'Usuário não encontrado',
+      try {
+        const response = await fetch('http://localhost:5000/api/auth/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            email: formData.email,
+            password: formData.password,
+          }),
         });
+  
+        if (!response.ok) {
+          const errorData = await response.json();
+          setErrors({ email: errorData.message || 'Erro ao fazer login' });
+          return;
+        }
+  
+        const data = await response.json();
+  
+        // Salva token e dados do usuário no localStorage
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('registeredUser', JSON.stringify(data.user));
+  
+        onSubmit(formData); // continua o fluxo normal do app
+      } catch (error) {
+        console.error('Erro ao fazer login:', error);
+        setErrors({ email: 'Erro de rede. Tente novamente.' });
       }
     }
   };
+  
+  
 
   return (
     <form onSubmit={handleSubmit} className="animate-slide-up">

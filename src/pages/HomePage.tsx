@@ -1,6 +1,8 @@
 import React from 'react';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
+import { motion } from 'framer-motion';
+import classNames from 'classnames';
 
 const disorders = [
   {
@@ -8,317 +10,238 @@ const disorders = [
     description:
       'O autismo é um transtorno do desenvolvimento que afeta a comunicação, comportamento e interação social...',
     image:
-      'https://images.pexels.com/photos/8709147/pexels-photo-8709147.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      'https://images.pexels.com/photos/8709147/pexels-photo-8709147.jpeg',
   },
   {
     title: 'TDAH',
     description:
       'O TDAH é caracterizado por dificuldades de atenção, impulsividade e hiperatividade...',
     image:
-      'https://images.pexels.com/photos/8378737/pexels-photo-8378737.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      'https://images.pexels.com/photos/8378737/pexels-photo-8378737.jpeg',
   },
   {
     title: 'TOD',
     description:
       'O TOD é um transtorno que envolve padrões de comportamento desafiador e oposição a autoridades...',
     image:
-      'https://images.pexels.com/photos/8378752/pexels-photo-8378752.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      'https://images.pexels.com/photos/8378752/pexels-photo-8378752.jpeg',
   },
   {
     title: 'Deficiência Intelectual',
     description:
       'Caracteriza-se por limitações significativas no funcionamento intelectual e no comportamento adaptativo...',
     image:
-      'https://images.pexels.com/photos/7352806/pexels-photo-7352806.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      'https://images.pexels.com/photos/7352806/pexels-photo-7352806.jpeg',
   },
   {
     title: 'Dislexia',
     description:
       'É uma dificuldade específica de aprendizagem, principalmente na leitura, escrita e soletração...',
     image:
-      'https://images.pexels.com/photos/3662803/pexels-photo-3662803.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      'https://images.pexels.com/photos/3662803/pexels-photo-3662803.jpeg',
   },
   {
     title: 'Transtorno de Ansiedade Infantil',
     description:
       'A ansiedade infantil pode se manifestar de diversas formas, como medo excessivo, preocupação constante ou fobia escolar...',
     image:
-      'https://images.pexels.com/photos/7929377/pexels-photo-7929377.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      'https://images.pexels.com/photos/7929377/pexels-photo-7929377.jpeg',
   },
 ];
 
+const borderColors = ['blue-400', 'red-300', 'green-900', 'yellow-400', 'purple-400'];
+
+const cardVariant = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.2,
+      duration: 0.6,
+      ease: 'easeOut',
+    },
+  }),
+};
+
 const HomePage: React.FC = () => {
   return (
-    <div className="relative min-h-screen bg-gradient-to-b from-yellow-50 to-white">
+    <div className="relative min-h-screen bg-blue-100 font-sans">
+
       <Header />
 
-      <main className="pt-20 pb-24">
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-500 to-green-400 bg-clip-text text-transparent">
-              Centro Integrado Kids
+      <main className="pt-24 pb-28">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h1 className="text-5xl font-extrabold mb-4 drop-shadow-md">
+              <span className="text-purple-600">C</span>
+              <span className="text-blue-300">e</span>
+              <span className="text-yellow-400">n</span>
+              <span className="text-red-600">t</span>
+              <span className="text-purple-600">r</span>
+              <span className="text-blue-300">o</span>
+              <span className="text-yellow-400"> </span>
+              <span className="text-yellow-400">I</span>
+              <span className="text-red-600">n</span>
+              <span className="text-purple-600">t</span>
+              <span className="text-blue-300">e</span>
+              <span className="text-yellow-300">g</span>
+              <span className="text-red-600">r</span>
+              <span className="text-purple-600">a</span>
+              <span className="text-blue-300">d</span>
+              <span className="text-yellow-400">o</span>
+              <span className="text-red-600"> </span>
+              <span className="text-red-600">K</span>
+              <span className="text-purple-600">i</span>
+              <span className="text-blue-300">d</span>
+              <span className="text-yellow-400">s</span>
             </h1>
           </div>
 
-          {/* Cards laterais sobre Autismo */}
-          <section className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
-            {/* Lateral esquerda com cards */}
-       {/* Lateral esquerda com cards informativos sobre autismo */}
-       <div className="w-full flex flex-col gap-6">
-  <div className="bg-gradient-to-r from-blue-300 to-green-200 rounded-xl shadow-md p-4 flex items-center gap-4">
-    <img
-      src="/images/luiz.jpg"
-      alt="Profissionais"
-      className="w-16 h-16"
-    />
-    <div>
-      <h3 className="text-lg font-semibold text-cyan-800">Psicopedagogo <br /> Luiz França</h3>
-      <p className="text-gray-700 text-sm mt-2">
-        .Avaliação diagnóstica completa. Terapias em Grupo. Avaliação de Transtornos Escolares.
-        Apoio Psicopedagógico e para deficiências. Plano de Tratamento individualizado.
-      </p>
-    </div>
-  </div>
+          <section className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-24">
+            <div className="flex flex-col gap-6">
+              {[
+                {
+                  name: 'Luiz França',
+                  title: 'Psicopedagogo',
+                  image: '/images/luiz.jpg',
+                  text: 'Avaliação diagnóstica completa. Terapias em Grupo. Avaliação de Transtornos Escolares. Apoio Psicopedagógico e para deficiências. Plano de Tratamento individualizado.',
+                },
+                {
+                  name: '',
+                  title: 'Massoterapeuta',
+                  image: 'images/masso.jpg',
+                  text: 'Trabalho com massagens, Ventosaterapia, Auriculoterapia, Bambuterapia que envolve técnicas da MTC (Medicina Tradicional Chinesa).',
+                },
+                {
+                  name: 'Regina Melo',
+                  title: 'Psicóloga',
+                  image: 'images/regina.jpg',
+                  text: 'Avaliação diagnóstica completa. Terapias em grupo. Avaliação Transtornos Escolares. Apoio psicopedagógico e para Deficiências. Plano de Tratamento Individualizado.',
+                },
+                {
+                  name: 'Thamiris Rafaella',
+                  title: 'Neuropsicopedagoga',
+                  image: '/images/neuropsicopedagoga.jpg',
+                  text: 'Avaliação Neuropsicopedagógica. Intervenção das dificuldades, distúrbios e transtornos de aprendizado. Orientação Familiar. Consultório Educacional.',
+                },
+                {
+                  name: 'Danila Oliveira',
+                  title: 'Fisioterapeuta',
+                  image: '/images/fisio.jpg',
+                  text: 'Atendimento voltado para crianças atípicas. Formação em fisioterapia e psicomotricidade. Pós-graduação em Fisioterapia Neurofuncional Pediátrica.',
+                },
+                {
+                  name: 'Marcia Teixeira',
+                  title: 'Neuropsicóloga',
+                  image: '/images/neuropsi.jpg',
+                  text: 'Avaliações Neuropsicológicas detalhadas para diagnóstico e plano de intervenção de distúrbios de neurodesenvolvimento como Autismo, TDAH, Alzheimer e outros.',
+                },
+              ].map((prof, idx) => (
+                <motion.div
+                  key={idx}
+                  variants={cardVariant}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.2 }}
+                  custom={idx}
+                  className={classNames(
+                    'bg-blue-50 rounded-xl shadow-lg p-4 flex gap-4 items-center hover:shadow-xl transition border-l-4',
+                    `border-${borderColors[idx % borderColors.length]}`
+                  )}
+                >
+                  <img src={prof.image} alt="Profissional" className="w-16 h-16 rounded-full object-cover border border-blue-200" />
+                  <div>
+                    <h3 className="text-lg font-bold text-blue-800">
+                      {prof.title} {prof.name && <><br />{prof.name}</>}
+                    </h3>
+                    <p className="text-blue-700 text-sm mt-2 leading-snug">{prof.text}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
 
-  <div className="bg-gradient-to-r from-blue-300 to-green-200 rounded-xl shadow-md p-4 flex items-center gap-4">
-    <img
-      src="images/masso.jpg"
-      alt="Profissionais"
-      className="w-16 h-16"
-    />
-    <div>
-      <h3 className="text-lg font-semibold text-cyan-800">Massoterapeuta <br /></h3>
-      <p className="text-gray-700 text-sm mt-2">
-        Trabalho com massagens, Ventosaterapia, Auriculoterapia, Bambuterapia que envolve técnicas
-        da MTC (Medicina Tradicional Chinesa).
-      </p>
-    </div>
-  </div>
-
-  <div className="bg-gradient-to-r from-blue-300 to-green-200 rounded-xl shadow-md p-4 flex items-center gap-4">
-    <img
-      src="images/regina.jpg"
-      alt="Profissionais"
-      className="w-16 h-16"
-    />
-    <div>
-      <h3 className="text-lg font-semibold text-cyan-800">Psicóloga <br /> Regina Melo</h3>
-      <p className="text-gray-700 text-sm mt-2">
-        Avaliação diagnóstica completa. Terapias em grupo. Avaliação Transtornos Escolares.
-        Apoio psicopedagógico e para Deficiências. Plano de Tratamento Individualizado.
-      </p>
-    </div>
-  </div>
-
-  <div className="bg-gradient-to-r from-blue-300 to-green-200 rounded-xl shadow-md p-4 flex items-center gap-4">
-    <img
-      src="/images/neuropsicopedagoga.jpg"
-      alt="Profissionais"
-      className="w-16 h-16"
-    />
-    <div>
-      <h3 className="text-lg font-semibold text-cyan-800">Neuropsicopedagoga <br />Thamiris Rafaella</h3>
-      <p className="text-gray-700 text-sm mt-2">
-        Avaliação Neuropsicopedagógica. Intervenção das dificuldades, distúrbios e transtornos de aprendizado.
-        Orientação Familiar. Consultório Educacional.
-      </p>
-    </div>
-  </div>
-
-  <div className="bg-gradient-to-r from-blue-300 to-green-200 rounded-xl shadow-md p-4 flex items-center gap-4">
-    <img
-      src="/images/fisio.jpg"
-      alt="Profissionais"
-      className="w-16 h-16"
-    />
-    <div>
-      <h3 className="text-lg font-semibold text-cyan-800">Fisioterapeuta <br /> Danila Oliveira</h3>
-      <p className="text-gray-700 text-sm mt-2">
-        Atendimento voltado para crianças atípicas. Formação em fisioterapia e psicomotricidade.
-        Pós-graduação em Fisioterapia Neurofuncional Pediátrica.
-      </p>
-    </div>
-  </div>
-
-  <div className="bg-gradient-to-r from-blue-300 to-green-200 rounded-xl shadow-md p-4 flex items-center gap-4">
-    <img
-      src="/images/neuropsi.jpg"
-      alt="Profissionais"
-      className="w-16 h-16"
-    />
-    <div>
-      <h3 className="text-lg font-semibold text-cyan-800">Neuropsicóloga <br /> Marcia Teixeira</h3>
-      <p className="text-gray-700 text-sm mt-2">
-        Realização de avaliações Neuropsicológica detalhadas para diagnóstico e Plano
-        de intervenção de distúrbios de neuro desenvolvimento, como Autismo, deificuldades 
-        de aprendizagem, prejuízos de atenção, dificuldades cognitivas nos quadros psiquiátricos
-        como: TDAH, Alzheimer e outros.
-      </p>
-    </div>
-  </div>
-
-  <div className="bg-gradient-to-r from-blue-300 to-green-200 rounded-xl shadow-md p-4 flex items-center gap-4">
-    <img
-      src="/images/psicomotricista.jpg"
-      alt="Profissionais"
-      className="w-16 h-16"
-    />
-    <div>
-      <h3 className="text-lg font-semibold text-cyan-800">Psicomotricista <br /> Ana Costa</h3>
-      <p className="text-gray-700 text-sm mt-2">
-        Atuação na organização corporal, lateralidade, equilíbrio e no desenvolvimento psicomotor infantil.
-      </p>
-    </div>
-  </div>
-
-  <div className="bg-gradient-to-r from-blue-300 to-green-200 rounded-xl shadow-md p-4 flex items-center gap-4">
-    <img
-      src="/images/psicomotricista.jpg"
-      alt="Profissionais"
-      className="w-16 h-16"
-    />
-    <div>
-      <h3 className="text-lg font-semibold text-cyan-800">Psicomotricista <br /> Ana Costa</h3>
-      <p className="text-gray-700 text-sm mt-2">
-        Atuação na organização corporal, lateralidade, equilíbrio e no desenvolvimento psicomotor infantil.
-      </p>
-    </div>
-
-    
-  </div>
-
-  <div className="bg-gradient-to-r from-blue-300 to-green-200 rounded-xl shadow-md p-4 flex items-center gap-4">
-    <img
-      src="/images/psicomotricista.jpg"
-      alt="Profissionais"
-      className="w-16 h-16"
-    />
-    <div>
-      <h3 className="text-lg font-semibold text-cyan-800">Psicomotricista <br /> Ana Costa</h3>
-      <p className="text-gray-700 text-sm mt-2">
-        Atuação na organização corporal, lateralidade, equilíbrio e no desenvolvimento psicomotor infantil.
-      </p>
-    </div>
-
-    
-  </div>
+            <div className="md:col-span-2 flex flex-col items-center text-center space-y-10">
+  {[
+    {
+      title: 'Quem somos nós?',
+      content: 'No Centro Integrado Kids, unimos profissionais especializados em diversas áreas para oferecer um atendimento completo e acolhedor às crianças e suas famílias. Nosso objetivo é promover o desenvolvimento infantil por meio de avaliações precisas, terapias personalizadas e orientação familiar contínua.\n\nContamos com uma equipe formada por psicopedagogos, psicólogos, neuropsicólogos, fisioterapeutas, psicomotricistas e massoterapeutas, todos comprometidos com o cuidado humanizado e o bem-estar dos pequenos.',
+    },
+    {
+      title: 'Missão',
+      content: 'Promover o acolhimento e suporte a crianças, adolescentes e jovens com deficiências ocultas e transtornos escolares relacionados à saúde mental.',
+    },
+    {
+      title: 'Visão',
+      content: 'Assegurar cuidados integrais na saúde mental e emocional de indivíduos com deficiências ocultas, promovendo sua plena inclusão nas dinâmicas sociais.',
+    },
+    {
+      title: 'Valores',
+      content: '1.Respeito e dignidade 2.Inclusão e acessibilidade 3.Compassividade e empatia 4.Profissionalismo e expertise 5.Família-centrada 6.Inovação    7.Confidencialidade',
+    },
+    {
+      title: 'Princípios',
+      content: '1. Centrado na criança 2. Família como parceira  3. Equipe interdisciplinar 4. Baseado em evidências',
+    },
+  ].map((section, idx) => (
+    <motion.div
+      key={idx}
+      variants={cardVariant}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      custom={idx}
+      className={classNames(
+        'bg-blue-50 rounded-xl shadow-lg p-6 flex flex-col gap-4 items-center hover:shadow-xl transition min-h-[200px] flex-grow',
+        `border-l-4 border-${borderColors[idx % borderColors.length]}`
+      )}
+    >
+      <h2 className="text-2xl font-bold text-blue-800 mb-4">{section.title}</h2>
+      <p className="text-blue-700 whitespace-pre-line leading-relaxed flex-grow">{section.content}</p>
+    </motion.div>
+  ))}
 </div>
 
-
-            {/* Conteúdo principal */}
-  {/* Conteúdo principal */}
-<div className="md:col-span-2 flex flex-col items-center text-center">
-  <h2 className="text-3xl font-bold text-blue-900 mb-4">Quem somos nós?</h2>
-
-  <div className="bg-gradient-to-r from-blue-300 to-green-200 p-6 rounded-xl shadow-md max-w-2xl">
-    <p className="text-gray-700 mb-6 leading-relaxed">
-      No Centro Integrado Kids, unimos profissionais especializados em diversas áreas para oferecer um atendimento completo e acolhedor às crianças e suas famílias. Nosso objetivo é promover o desenvolvimento infantil por meio de avaliações precisas, terapias personalizadas e orientação familiar contínua.
-      <br /><br />
-      Contamos com uma equipe formada por psicopedagogos, psicólogos, neuropsicólogos, fisioterapeutas, psicomotricistas e massoterapeutas, todos comprometidos com o cuidado humanizado e o bem-estar dos pequenos. Atuamos com enfoque nos transtornos do neurodesenvolvimento, como o autismo, TDAH, TOD, dislexia, deficiência intelectual e ansiedade infantil, respeitando as particularidades de cada criança.
-      <br /><br />
-      Acreditamos que, com afeto, conhecimento e colaboração entre família e profissionais, é possível construir trajetórias de crescimento mais saudáveis e felizes.
-    </p>
-  </div>
-  <br />
-  <h2 className="text-3xl font-bold text-blue-900 mb-4">Missão</h2>
-
-<div className="bg-gradient-to-r from-blue-300 to-green-200 p-6 rounded-xl shadow-md max-w-2xl">
-  <p className="text-gray-700 mb-6 leading-relaxed">
-  Promover o acolhimento e suporte a crianças, adolescentes e jovens com deficiências ocultas
-  e transtornos escolares relacionados à saúde mental, tais como TEA, TDAH, TOD, TEI, entre outros,
-   visando a criação de um ambiente de compreensão e assistência adequada.
-
-  </p>
-</div>
-
-<br />
-
-<h2 className="text-3xl font-bold text-blue-900 mb-4">Visão</h2>
-
-<div className="bg-gradient-to-r from-blue-300 to-green-200 p-6 rounded-xl shadow-md max-w-2xl">
-  <p className="text-gray-700 mb-6 leading-relaxed">
-  Assegurar cuidados integrais na saúde mental e emocional de indivíduos 
-  com deficiências ocultas, promovendo sua plena inclusão nas dinâmicas sociais e psicossociais. Além disso, desenvolver e implementar estratégias de apoio direcionadas às mães atípicas, 
-  com o objetivo de garantir o bem-estar integral de suas famílias.
-
-  </p>
-</div>
-<br />
-
-
-<h2 className="text-3xl font-bold text-blue-900 mb-4">Valores</h2>
-
-<div className="bg-gradient-to-r from-blue-300 to-green-200 p-6 rounded-xl shadow-md max-w-2xl">
-  <p className="text-gray-700 mb-6 leading-relaxed">
-  1. Respeito e dignidade: Tratar cada criança e família com respeito e dignidade, 
-  independentimente de suas necessidades ou habilidades. <br />
-  2. Inclusão e acessibilidade: Garantir que todos os serviçoes sejam
-  acessíveis de inclusivos para crianças com deficiências ocultas. <br />
-  3. Compassividade e empatia: Oferecer apoio emocional e compreensão 
-  para as crianças e famílias que atendemos. <br />
-  4. Profissionalismo e expertise: Manter um alto nível de Profissionalismo
-  e expertise em nossas práticas e serviços. <br />
-  5.Família-centrada: Trabalhar em parceria com as famílias para entender
-  suas necessidades e objetivos. <br />
-  6. Inovação e criatividade: Buscar soluções inovadoras e criativas 
-  para atender às necessidades únicas de cada criança. <br />
-  7. Privacidade e confidencialidade: Garantir a privacidade e confidencialidade
-  das informações das crianças e famílias que atendemos.
-
-  </p>
-</div>
-<br />
-
-
-<h2 className="text-3xl font-bold text-blue-900 mb-4">Princípios</h2>
-
-<div className="bg-gradient-to-r from-blue-300 to-green-200 p-6 rounded-xl shadow-md max-w-2xl">
-  <p className="text-gray-700 mb-6 leading-relaxed">
-  1. Centrado na criança: Colocar as necessidades e interesses da criança
-  no centro de nossas práticas. <br />
-  2. Família como parceira: Trabalhar com parceria com famílias para
-  alcançar os objetivos da criança. <br />
-  3. Equipe interdisciplinar: Trabalhar em equipe com profissionais de diferentes 
-  áreas para oferecer serviçoes abrangentes. <br />
-  4. Baseado em evidências: Utilizar práticas e intervenções baseadas
-  em evidências científicas.
-
-  </p>
-</div>
-
-
-</div>
-
+{/* Linha divisória entre os cards principais e os transtornos */}
 
           </section>
 
-          {/* Cards sobre Transtornos */}
-          <div className="py-16 relative z-10">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <h2 className="text-3xl font-bold text-center font-bold mb-4 bg-gradient-to-r from-green-500 to-blue-400 bg-clip-text text-transparent">
-      Vocês sabiam?
-    </h2>
-
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-      {disorders.map((card, index) => (
-        <div
-          key={index}
-          className="bg-gradient-to-r from-blue-300 to-green-200 text-gray-900 shadow-lg rounded-lg p-6 transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl"
-        >
-          <img
-            src={card.image}
-            alt={card.title}
-            className="w-full h-40 object-cover rounded mb-4"
-          />
-          <h3 className="text-xl font-semibold mb-2">{card.title}</h3>
-          <p className="text-gray-600 text-sm">{card.description}</p>
+          <section className="py-16">
+            <div className="max-w-7xl mx-auto text-center">
+              <h2 className="text-4xl font-bold bg-gradient-to-r from-blue-500 via-purple-500 to-yellow-400 bg-clip-text text-transparent mb-12">
+                Vocês sabiam?
+              </h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+                {disorders.map((card, index) => (
+                  <motion.div
+                    key={index}
+                    variants={cardVariant}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.2 }}
+                    custom={index}
+                    className={classNames(
+                      'bg-white text-gray-900 shadow-lg rounded-lg p-6 border-l-4 transform transition duration-300 hover:scale-105 hover:shadow-xl',
+                      `border-${borderColors[index % borderColors.length]}`
+                    )}
+                  >
+                    <img
+                      src={card.image}
+                      alt={card.title}
+                      className="w-full h-48 object-cover rounded mb-4"
+                    />
+                    <h3 className="text-xl font-semibold mb-2 text-blue-600">{card.title}</h3>
+                    <p className="text-blue-700 text-sm leading-snug">{card.description}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </section>
         </div>
-      ))}
-    </div>
-  </div>
-</div>
 
-        </div>
+        <a href="https://wa.me/5521973692354" className="fixed bottom-4 right-4 bg-green-500 text-white p-3 rounded-full shadow-lg hover:bg-green-600" target="_blank">
+          WhatsApp
+        </a>
       </main>
 
       <Footer />

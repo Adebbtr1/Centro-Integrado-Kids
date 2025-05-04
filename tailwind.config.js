@@ -49,3 +49,18 @@ export default {
   },
   plugins: [],
 };
+
+module.exports = {
+  content: [
+    "./src/**/*.{html,js,jsx,ts,tsx}",
+  ],
+  safelist: [
+    'border-blue-400',
+    'border-red-300',
+    'border-green-900',
+    'border-yellow-400',
+    'border-purple-400',
+  ],
+  // outras configurações do Tailwind
+}
+
