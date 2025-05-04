@@ -56,10 +56,7 @@ const Header: React.FC = () => {
   ];
 
   return (
-    <header className="relative overflow-hidden bg-gradient-to-r from-blue-600 to-green-600 text-white shadow-md fixed top-0 left-0 w-full z-50">
-      {/* Efeito animado de fundo */}
-      <div className="header-pattern absolute inset-0" />
-
+    <header className="fixed top-0 left-0 w-full bg-gradient-to-r from-blue-600 to-green-600 text-white shadow-md z-50">
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <div className="flex justify-between items-center">
           {/* Logo */}
@@ -95,7 +92,6 @@ const Header: React.FC = () => {
                 {item.label}
               </Button>
             ))}
-
             <Button
               variant="outline"
               size="sm"
@@ -110,8 +106,8 @@ const Header: React.FC = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="lg:hidden absolute left-0 right-0 bg-gradient-to-r from-blue-600 to-green-600 z-50">
-            <div className="px-4 pt-2 pb-4 space-y-2">
+          <div className="lg:hidden mt-4 bg-gradient-to-r from-blue-600 to-green-600 p-4 rounded shadow-md">
+            <div className="space-y-2">
               {MenuItems.map((item, index) => (
                 <Button
                   key={index}
@@ -128,7 +124,6 @@ const Header: React.FC = () => {
                   {item.label}
                 </Button>
               ))}
-
               <Button
                 variant="outline"
                 size="sm"

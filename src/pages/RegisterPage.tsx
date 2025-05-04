@@ -7,38 +7,59 @@ import { RegisterFormData } from '../types/auth';
 const RegisterPage: React.FC = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null); // Para exibir erro, se necessário
 
-  const handleRegister = (data: RegisterFormData) => {
+  const handleRegister = async (data: RegisterFormData) => {
     setIsLoading(true);
-    
-    // Retrieve existing registered users
-    const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
-    
-    // Add new user
-    registeredUsers.push({
-      username: data.username,
-      email: data.email,
-      fullName: data.username  // Use username as full name for now
-    });
-    
-    // Store updated users list
-    localStorage.setItem('registeredUsers', JSON.stringify(registeredUsers));
-    
-    // Simulate API call
-    setTimeout(() => {
-      console.log('Registration attempt with:', data);
+    setError(null); // Limpa o erro antes de tentar novamente
+
+    try {
+      // Envia os dados de registro para o back-end
+      const response = await fetch('http://localhost:5000/api/auth/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: data.username,
+          email: data.email,
+          password: data.password,
+        }),
+      });
+
+      // Verifica se a resposta foi bem-sucedida
+      if (!response.ok) {
+        const result = await response.json();
+        throw new Error(result.message || 'Erro ao registrar usuário');
+      }
+
+      // Recebe os dados de resposta (token e usuário)
+      const result = await response.json();
+      const { token, user } = result;
+
+      // Armazena o token no localStorage
+      localStorage.setItem('token', token);
+      localStorage.setItem('user', JSON.stringify(user)); // Você pode armazenar os dados do usuário também, se necessário
+
+      // Redireciona para a página de login
       setIsLoading(false);
-      
-      // Redirect to login
       navigate('/login');
-    }, 1500);
+    } catch (err) {
+      setIsLoading(false);
+      if (err instanceof Error) {
+        setError(err.message); // Exibe o erro
+      } else {
+        setError('Erro inesperado');
+      }
+    }
   };
 
   return (
-    <AuthLayout 
-      title="Criar conta" 
+    <AuthLayout
+      title="Criar conta"
       subtitle="Junte-se à nossa comunidade hoje"
     >
+      {error && <div className="text-red-500 mb-4">{error}</div>} {/* Exibe mensagem de erro */}
       <RegisterForm onSubmit={handleRegister} isLoading={isLoading} />
     </AuthLayout>
   );

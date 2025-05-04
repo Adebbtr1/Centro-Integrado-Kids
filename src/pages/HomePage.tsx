@@ -49,7 +49,7 @@ const disorders = [
 
 const HomePage: React.FC = () => {
   return (
-    <div className="relative min-h-screen bg-gradient-to-b from-yellow-100 to-white">
+    <div className="relative min-h-screen bg-gradient-to-b from-yellow-50 to-white">
       <Header />
 
       <main className="pt-20 pb-24">
@@ -65,7 +65,7 @@ const HomePage: React.FC = () => {
             {/* Lateral esquerda com cards */}
        {/* Lateral esquerda com cards informativos sobre autismo */}
        <div className="w-full flex flex-col gap-6">
-  <div className="bg-white rounded-xl shadow-md p-4 flex items-center gap-4">
+  <div className="bg-gradient-to-r from-blue-300 to-green-200 rounded-xl shadow-md p-4 flex items-center gap-4">
     <img
       src="/images/luiz.jpg"
       alt="Profissionais"
@@ -74,14 +74,13 @@ const HomePage: React.FC = () => {
     <div>
       <h3 className="text-lg font-semibold text-cyan-800">Psicopedagogo <br /> Luiz França</h3>
       <p className="text-gray-700 text-sm mt-2">
-         <br />
         .Avaliação diagnóstica completa. Terapias em Grupo. Avaliação de Transtornos Escolares.
         Apoio Psicopedagógico e para deficiências. Plano de Tratamento individualizado.
       </p>
     </div>
   </div>
 
-  <div className="bg-white rounded-xl shadow-md p-4 flex items-center gap-4">
+  <div className="bg-gradient-to-r from-blue-300 to-green-200 rounded-xl shadow-md p-4 flex items-center gap-4">
     <img
       src="images/masso.jpg"
       alt="Profissionais"
@@ -96,7 +95,7 @@ const HomePage: React.FC = () => {
     </div>
   </div>
 
-  <div className="bg-white rounded-xl shadow-md p-4 flex items-center gap-4">
+  <div className="bg-gradient-to-r from-blue-300 to-green-200 rounded-xl shadow-md p-4 flex items-center gap-4">
     <img
       src="images/regina.jpg"
       alt="Profissionais"
@@ -111,7 +110,7 @@ const HomePage: React.FC = () => {
     </div>
   </div>
 
-  <div className="bg-white rounded-xl shadow-md p-4 flex items-center gap-4">
+  <div className="bg-gradient-to-r from-blue-300 to-green-200 rounded-xl shadow-md p-4 flex items-center gap-4">
     <img
       src="/images/neuropsicopedagoga.jpg"
       alt="Profissionais"
@@ -125,10 +124,8 @@ const HomePage: React.FC = () => {
       </p>
     </div>
   </div>
-  <div className="w-full flex flex-col gap-6">
-  {/* ...cards anteriores... */}
 
-  <div className="bg-white rounded-xl shadow-md p-4 flex items-center gap-4">
+  <div className="bg-gradient-to-r from-blue-300 to-green-200 rounded-xl shadow-md p-4 flex items-center gap-4">
     <img
       src="/images/fisio.jpg"
       alt="Profissionais"
@@ -143,7 +140,7 @@ const HomePage: React.FC = () => {
     </div>
   </div>
 
-  <div className="bg-white rounded-xl shadow-md p-4 flex items-center gap-4">
+  <div className="bg-gradient-to-r from-blue-300 to-green-200 rounded-xl shadow-md p-4 flex items-center gap-4">
     <img
       src="/images/neuropsi.jpg"
       alt="Profissionais"
@@ -160,7 +157,7 @@ const HomePage: React.FC = () => {
     </div>
   </div>
 
-  <div className="bg-white rounded-xl shadow-md p-4 flex items-center gap-4">
+  <div className="bg-gradient-to-r from-blue-300 to-green-200 rounded-xl shadow-md p-4 flex items-center gap-4">
     <img
       src="/images/psicomotricista.jpg"
       alt="Profissionais"
@@ -173,8 +170,38 @@ const HomePage: React.FC = () => {
       </p>
     </div>
   </div>
-</div>
 
+  <div className="bg-gradient-to-r from-blue-300 to-green-200 rounded-xl shadow-md p-4 flex items-center gap-4">
+    <img
+      src="/images/psicomotricista.jpg"
+      alt="Profissionais"
+      className="w-16 h-16"
+    />
+    <div>
+      <h3 className="text-lg font-semibold text-cyan-800">Psicomotricista <br /> Ana Costa</h3>
+      <p className="text-gray-700 text-sm mt-2">
+        Atuação na organização corporal, lateralidade, equilíbrio e no desenvolvimento psicomotor infantil.
+      </p>
+    </div>
+
+    
+  </div>
+
+  <div className="bg-gradient-to-r from-blue-300 to-green-200 rounded-xl shadow-md p-4 flex items-center gap-4">
+    <img
+      src="/images/psicomotricista.jpg"
+      alt="Profissionais"
+      className="w-16 h-16"
+    />
+    <div>
+      <h3 className="text-lg font-semibold text-cyan-800">Psicomotricista <br /> Ana Costa</h3>
+      <p className="text-gray-700 text-sm mt-2">
+        Atuação na organização corporal, lateralidade, equilíbrio e no desenvolvimento psicomotor infantil.
+      </p>
+    </div>
+
+    
+  </div>
 </div>
 
 
@@ -216,15 +243,50 @@ const HomePage: React.FC = () => {
 
   </p>
 </div>
+<br />
 
-  <div className="flex flex-col items-center mt-6">
-    <img
-      src="https://cdn-icons-png.flaticon.com/512/3208/3208721.png"
-      alt="Autismo"
-      className="w-40 h-40 object-contain mb-4"
-    />
-    <div className="text-blue-700 text-4xl">💙💙💙</div>
-  </div>
+
+<h2 className="text-3xl font-bold text-blue-900 mb-4">Valores</h2>
+
+<div className="bg-gradient-to-r from-blue-300 to-green-200 p-6 rounded-xl shadow-md max-w-2xl">
+  <p className="text-gray-700 mb-6 leading-relaxed">
+  1. Respeito e dignidade: Tratar cada criança e família com respeito e dignidade, 
+  independentimente de suas necessidades ou habilidades. <br />
+  2. Inclusão e acessibilidade: Garantir que todos os serviçoes sejam
+  acessíveis de inclusivos para crianças com deficiências ocultas. <br />
+  3. Compassividade e empatia: Oferecer apoio emocional e compreensão 
+  para as crianças e famílias que atendemos. <br />
+  4. Profissionalismo e expertise: Manter um alto nível de Profissionalismo
+  e expertise em nossas práticas e serviços. <br />
+  5.Família-centrada: Trabalhar em parceria com as famílias para entender
+  suas necessidades e objetivos. <br />
+  6. Inovação e criatividade: Buscar soluções inovadoras e criativas 
+  para atender às necessidades únicas de cada criança. <br />
+  7. Privacidade e confidencialidade: Garantir a privacidade e confidencialidade
+  das informações das crianças e famílias que atendemos.
+
+  </p>
+</div>
+<br />
+
+
+<h2 className="text-3xl font-bold text-blue-900 mb-4">Princípios</h2>
+
+<div className="bg-gradient-to-r from-blue-300 to-green-200 p-6 rounded-xl shadow-md max-w-2xl">
+  <p className="text-gray-700 mb-6 leading-relaxed">
+  1. Centrado na criança: Colocar as necessidades e interesses da criança
+  no centro de nossas práticas. <br />
+  2. Família como parceira: Trabalhar com parceria com famílias para
+  alcançar os objetivos da criança. <br />
+  3. Equipe interdisciplinar: Trabalhar em equipe com profissionais de diferentes 
+  áreas para oferecer serviçoes abrangentes. <br />
+  4. Baseado em evidências: Utilizar práticas e intervenções baseadas
+  em evidências científicas.
+
+  </p>
+</div>
+
+
 </div>
 
 
@@ -232,29 +294,30 @@ const HomePage: React.FC = () => {
 
           {/* Cards sobre Transtornos */}
           <div className="py-16 relative z-10">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <h2 className="text-3xl font-bold text-center font-bold mb-4 bg-gradient-to-r from-green-500 to-blue-400 bg-clip-text text-transparent">
-                Vocês sabiam?
-              </h2>
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 className="text-3xl font-bold text-center font-bold mb-4 bg-gradient-to-r from-green-500 to-blue-400 bg-clip-text text-transparent">
+      Vocês sabiam?
+    </h2>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                {disorders.map((card, index) => (
-                  <div
-                    key={index}
-                    className="bg-white text-gray-900 shadow-lg rounded-lg p-6 transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl"
-                  >
-                    <img
-                      src={card.image}
-                      alt={card.title}
-                      className="w-full h-40 object-cover rounded mb-4"
-                    />
-                    <h3 className="text-xl font-semibold mb-2">{card.title}</h3>
-                    <p className="text-gray-600 text-sm">{card.description}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+      {disorders.map((card, index) => (
+        <div
+          key={index}
+          className="bg-gradient-to-r from-blue-300 to-green-200 text-gray-900 shadow-lg rounded-lg p-6 transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl"
+        >
+          <img
+            src={card.image}
+            alt={card.title}
+            className="w-full h-40 object-cover rounded mb-4"
+          />
+          <h3 className="text-xl font-semibold mb-2">{card.title}</h3>
+          <p className="text-gray-600 text-sm">{card.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
         </div>
       </main>
 

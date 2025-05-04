@@ -73,22 +73,53 @@ const RegisterSchoolPage: React.FC = () => {
       setIsLoading(true);
       
       // Save school data to localStorage
-      const schools = JSON.parse(localStorage.getItem('registeredSchools') || '[]');
-      schools.push(formData);
-      localStorage.setItem('registeredSchools', JSON.stringify(schools));
+      const token = localStorage.getItem('token'); 
+      if (!token) {
+        alert("Você precisa estar logado para registrar uma escola.");
+        navigate('/login');  // Redireciona para a página de login
+        return;
+      }
       
-      setTimeout(() => {
-        setIsLoading(false);
-        navigate('/home');
-      }, 1500);
+      fetch('http://localhost:5000/schools', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+        body: JSON.stringify(formData),
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Erro ao registrar escola');
+          }
+          return response.json();
+        })
+        .then(() => {
+          setIsLoading(false);
+          navigate('/home');
+        })
+        .catch((error) => {
+          setIsLoading(false);
+          alert(error.message);
+        });
+      
     }
   };
+
+  const token = localStorage.getItem('token');
+if (!token) {
+  alert("Você precisa estar logado para registrar uma escola.");
+  navigate('/login');  // Redirecionar para a página de login
+  return;
+}
+
 
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
       
-      <main className="flex-grow bg-gray-50">
+      <main className="flex-grow bg-gray-50 pt-24">
+
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="bg-white rounded-lg shadow-md p-6 md:p-8">
             <div className="mb-8">

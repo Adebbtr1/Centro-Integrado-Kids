@@ -103,7 +103,8 @@ const ScheduledConsultationsPage: React.FC = () => {
     <div className="min-h-screen flex flex-col">
       <Header />
       
-      <main className="flex-grow bg-gray-50">
+      <main className="flex-grow bg-gray-50 pt-24">
+
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="bg-white rounded-lg shadow-md p-6 md:p-8">
             <div className="mb-8 flex justify-between items-center">
