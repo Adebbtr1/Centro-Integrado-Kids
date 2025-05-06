@@ -1,57 +1,9 @@
 const express = require('express');
-const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const User = require('../models/User');
+const User = require('../models/User'); // ajuste o caminho se necessário
 
-// Register
-router.post('/register', async (req, res) => {
-  try {
-    const { username, email, password } = req.body;
-
-    console.log('Login attempt with email:', email);
-
-    // Check if user already exists
-    let user = await User.findOne({ $or: [{ email }, { username }] });
-    if (user) {
-      return res.status(400).json({ message: 'User already exists' });
-    }
-
-    // Hash password
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(password, salt);
-
-    // Create new user
-    user = new User({
-      username,
-      email,
-      password: hashedPassword,
-      fullName: username
-    });
-
-    await user.save();
-
-    // Create JWT token
-    const payload = {
-      user: {
-        id: user._id
-      }
-    };
-
-    jwt.sign(
-      payload, 
-      process.env.JWT_SECRET, 
-      { expiresIn: '1h' }, 
-      (err, token) => {
-        if (err) throw err;
-        res.json({ token });
-      }
-    );
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Server error' });
-  }
-});
+const router = express.Router();
 
 // Login
 router.post('/login', async (req, res) => {
@@ -70,20 +22,29 @@ router.post('/login', async (req, res) => {
       return res.status(400).json({ message: 'Invalid credentials' });
     }
 
-    // Create JWT token
+    // Create JWT token with role
     const payload = {
       user: {
-        id: user._id
+        id: user._id,
+        role: user.role // adiciona role no token
       }
     };
 
     jwt.sign(
-      payload, 
-      process.env.JWT_SECRET, 
-      { expiresIn: '1h' }, 
+      payload,
+      process.env.JWT_SECRET,
+      { expiresIn: '1h' },
       (err, token) => {
         if (err) throw err;
-        res.json({ token, user: { id: user._id, username: user.username, email: user.email } });
+        res.json({
+          token,
+          user: {
+            id: user._id,
+            username: user.username,
+            email: user.email,
+            role: user.role // retorna role ao frontend
+          }
+        });
       }
     );
   } catch (error) {

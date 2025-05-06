@@ -53,6 +53,11 @@ const Header: React.FC = () => {
       label: 'Home',
       onClick: () => navigate('/home')
     },
+    {
+      icon: <Flag size={16} className="mr-2" />,
+      label: 'Admin',
+      onClick: () => navigate('/admin-login') // Alterado para redirecionar para o login do admin
+    }
   ];
 
   return (
@@ -61,16 +66,16 @@ const Header: React.FC = () => {
         <div className="flex justify-between items-center">
           {/* Logo */}
           <div
-  className="flex items-center cursor-pointer"
-  onClick={() => navigate('/home')}
->
-  <img
-    src="/images/cik10.jpg" // substitua pelo caminho correto da sua logo
-    alt="Logo Centro Integrado Kids"
-    className="h-11 w-11 mr-2 rounded-full object-cover"
-  />
-  <span className="text-xl font-bold text-white">CIK</span>
-</div>
+            className="flex items-center cursor-pointer"
+            onClick={() => navigate('/home')}
+          >
+            <img
+              src="/images/cik10.jpg" // substitua pelo caminho correto da sua logo
+              alt="Logo Centro Integrado Kids"
+              className="h-11 w-11 mr-2 rounded-full object-cover"
+            />
+            <span className="text-xl font-bold text-white">CIK</span>
+          </div>
 
           {/* Mobile Menu Toggle */}
           <div className="lg:hidden">

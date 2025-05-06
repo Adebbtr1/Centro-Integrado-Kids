@@ -3,7 +3,7 @@ import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 
 interface School {
-  id: string;
+  _id: string; // Alterei para _id que é o padrão do MongoDB
   name: string;
   director: string;
   cnpj: string;
@@ -30,18 +30,29 @@ const SchoolsListPage: React.FC = () => {
       }
   
       try {
-        const response = await fetch('http://localhost:5000/api/schools', {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+        // Buscar escolas
+        const schoolsResponse = await fetch('http://localhost:5000/api/schools', {
+          headers: { Authorization: `Bearer ${token}` },
         });
   
-        if (!response.ok) {
+        if (!schoolsResponse.ok) {
           throw new Error('Erro ao buscar escolas');
         }
   
-        const data = await response.json();
-        setSchools(data); // Aqui vem a lista de escolas, já com alunos se você populou no backend
+        const schoolsData = await schoolsResponse.json();
+        setSchools(schoolsData);
+  
+        // Buscar estudantes
+        const studentsResponse = await fetch('http://localhost:5000/api/students', {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+  
+        if (!studentsResponse.ok) {
+          throw new Error('Erro ao buscar estudantes');
+        }
+  
+        const studentsData = await studentsResponse.json();
+        setStudents(studentsData);
   
       } catch (error) {
         console.error(error);
@@ -55,16 +66,15 @@ const SchoolsListPage: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      
-      <main className="flex-grow bg-gray-50 pt-24">
 
+      <main className="flex-grow bg-gray-50 pt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="bg-white rounded-lg shadow-md overflow-hidden">
             <div className="p-6 border-b border-gray-200">
               <h1 className="text-3xl font-bold text-gray-900">Escolas Registradas</h1>
               <p className="mt-2 text-gray-600">Lista de todas as escolas e seus alunos cadastrados</p>
             </div>
-            
+
             <div className="divide-y divide-gray-200">
               {schools.length === 0 ? (
                 <div className="p-6 text-center text-gray-500">
@@ -72,17 +82,17 @@ const SchoolsListPage: React.FC = () => {
                 </div>
               ) : (
                 schools.map(school => {
-                  const schoolStudents = students.filter(student => student.school === school.id);
+                  const schoolStudents = students.filter(student => student.school === school._id); // Usando _id no filtro
                   
                   return (
-                    <div key={school.id} className="p-6 hover:bg-gray-50 transition-colors duration-200">
+                    <div key={school._id} className="p-6 hover:bg-gray-50 transition-colors duration-200">
                       <div className="flex items-center justify-between mb-4">
                         <h2 className="text-xl font-semibold text-gray-900">{school.name}</h2>
                         <span className="px-3 py-1 text-sm text-aqua-700 bg-aqua-50 rounded-full">
                           {schoolStudents.length} alunos
                         </span>
                       </div>
-                      
+
                       {schoolStudents.length > 0 ? (
                         <div className="mt-4 space-y-3">
                           <h3 className="text-sm font-medium text-gray-500">Alunos Cadastrados:</h3>
@@ -109,7 +119,7 @@ const SchoolsListPage: React.FC = () => {
           </div>
         </div>
       </main>
-      
+
       <Footer />
     </div>
   );

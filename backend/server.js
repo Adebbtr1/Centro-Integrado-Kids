@@ -22,6 +22,8 @@ app.use('/api/auth', require('./routes/auth'));
 app.use('/api/schools', require('./routes/schools'));
 app.use('/api/students', require('./routes/students'));
 app.use('/api/consultations', require('./routes/consultations'));
+app.use('/api/admin', require('./routes/adminAuth'));
+
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
